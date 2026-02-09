@@ -1,0 +1,3 @@
+stack = [3, 4, 9]
+stack.append (6)
+stack.pop
