@@ -24,3 +24,15 @@ def test_is_weekend_weekday():
 def test_days_between_invalid_format():
     with pytest.raises(ValueError):
         days_between("not-a-date", "2025-03-15")
+from timeutils.dates import next_weekday
+
+def test_next_weekday_simple_forward():
+    assert next_weekday("2025-03-12", 4) == "2025-03-14"
+
+
+def test_next_weekday_wraparound():
+    assert next_weekday("2025-03-15", 0) == "2025-03-17"
+
+
+def test_next_weekday_same_day_returns_next_week():
+    assert next_weekday("2025-03-17", 0) == "2025-03-24"
